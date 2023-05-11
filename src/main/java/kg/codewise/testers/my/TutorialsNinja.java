@@ -11,6 +11,7 @@ import java.util.List;
 public class TutorialsNinja {
 
     public static void main(String[] args) {
+        chooseAllFeaturedProducts();
     }
 
     public static void checkNumberOfMenuButtons(){
@@ -125,6 +126,8 @@ public class TutorialsNinja {
             List<WebElement> priceOfFeaturedProducts = driver
                     .findElements(By.xpath("//h3[.='Featured']//following-sibling::div[1]/div//p[@class='price']//span[starts-with(text(),'Ex')] "));
             for (int i = 0; i < priceOfFeaturedProducts.size(); i++) {
+                priceOfFeaturedProducts = driver
+                        .findElements(By.xpath("//h3[.='Featured']//following-sibling::div[1]/div//p[@class='price']//span[starts-with(text(),'Ex')] "));
                 WebElement priceOfFeaturedProduct = priceOfFeaturedProducts.get(i);
                 System.out.println("Current page: "+driver.getCurrentUrl());
                 System.out.println("WebElement: "+priceOfFeaturedProduct);
