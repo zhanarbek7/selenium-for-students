@@ -106,7 +106,6 @@ public class TutorialsNinja {
             System.out.println("Unexpected exception");
         }
     }
-
     // not done yet
     public static void checkInvalidLoginNoEmail(){
         try{
@@ -117,59 +116,30 @@ public class TutorialsNinja {
             System.out.println("Unexpected exception");
         }
     }
-
     // here I will have some exceptions, we will talk about it, elements became stale
     public static void chooseAllFeaturedProducts(){
         try{
             WebDriver driver = new FirefoxDriver();
             driver.get("https://tutorialsninja.com/demo/");
-            List<WebElement> priceOfFeaturedProducts = driver
-                    .findElements(By.xpath("//h3[.='Featured']//following-sibling::div[1]/div//p[@class='price']//span[starts-with(text(),'Ex')] "));
-            for (int i = 0; i < priceOfFeaturedProducts.size(); i++) {
-                priceOfFeaturedProducts = driver
-                        .findElements(By.xpath("//h3[.='Featured']//following-sibling::div[1]/div//p[@class='price']//span[starts-with(text(),'Ex')] "));
-                WebElement priceOfFeaturedProduct = priceOfFeaturedProducts.get(i);
-                System.out.println("Current page: "+driver.getCurrentUrl());
-                System.out.println("WebElement: "+priceOfFeaturedProduct);
-                String text = priceOfFeaturedProduct.getText();
-                text = text.substring(8);
-                double priceExTax = Double.parseDouble(text);
-                System.out.println(priceExTax);
-                if (priceExTax < 200) {
-                    int j = i+1;
-                    WebElement productImage = driver.findElement(By.xpath("(//h3/following-sibling::div[1]//img)["+(j)+"]"));
-                    WebElement productLink = driver.findElement(By.xpath("(//h3/following-sibling::div[1]//h4/a)["+j+"]"));
-                    String productName = productLink.getText();
-                    productImage.click();
-                    addProductToCart(driver, productName);
-                    driver.navigate().back();
+            int numberOfFeaturedProducts = driver.findElements(By.xpath("(//div[@class='row'])[3]/div")).size();
+            for (int i = 0; i < numberOfFeaturedProducts; i++) {
+                int j = i+1;
+                WebElement productLink = driver.findElement(By.xpath("(//h3/following-sibling::div[1]//h4/a)["+j+"]"));
+                String productName = productLink.getText();
+                if (productName.equals("iPhone")) {
+                    WebElement element = driver.findElement(By.xpath("(//div[@class='button-group'])["+j+"]"));
+                    element.click();
+                    driver.findElement(By.xpath("cart-total")).click();
+                    String boughtProduct = driver
+                            .findElement(By.xpath("//div[@id='cart']/ul/li[1]//tr/td[2]")).getText();
+                    if(boughtProduct.equals(productName)){
+                        System.out.println("Success");
+                    }
                 }
             }
         }catch(Exception e){
             System.out.println("Unexpected exception");
-            e.printStackTrace();
         }
+
     }
-
-    public static void addProductToCart(WebDriver driver, String productName){
-        switch (productName){
-            case "MacBook","iPhone" -> {
-                WebElement element = driver.findElement(By.id("button-cart"));
-                element.click();
-            }
-            case "Apple Cinema 30\"" -> {
-                WebElement element = driver.findElement(By.xpath("//div[@id='input-option218']//input[@value=6]"));
-                element.click();
-            }
-            case "Canon EOS 5D" -> {
-                System.out.println("We are out of Canon EOS 5D");
-            }
-            default -> {
-            }
-        }
-    }
-
-
-
-
 }
