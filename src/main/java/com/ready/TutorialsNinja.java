@@ -1,4 +1,4 @@
-package kg.codewise.testers.my;
+package com.ready;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
