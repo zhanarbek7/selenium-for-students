@@ -6,8 +6,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class Elements {
-    public static void main(String[] args) throws InterruptedException {
-
+    public static void main(String[] args)  {
+        readTable();
     }
 
     public static void readTable(){
@@ -32,6 +32,10 @@ public class Elements {
             }
             System.out.println();
         }
+    }
+
+    public static void otherElements(){
+
     }
 
 }

@@ -22,10 +22,12 @@ public class Magento {
         Thread.sleep(1000);
         driver.findElement(By.xpath("//ul[@id='ui-id-2']/li[3]")).click();
         driver.findElement(By.xpath("//main/div[last()]/div[1]//strong[.='Luma tees']")).click();
-        List<WebElement> prices;
+        List<WebElement> prices;;
         List<WebElement> imagesToClickOn = driver
                 .findElements(By.xpath("//div[@class='column main']//li//img"));
+
         int numberOfAddedTees = 0;
+
         for (int i = 0; i < imagesToClickOn.size();i++){
             prices = driver.findElements(By.xpath("//div[@class='column main']//li//span[contains(@id, 'p')]/span"));
             imagesToClickOn = driver.findElements(By.xpath("//div[@class='column main']//li//img"));
