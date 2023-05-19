@@ -1,4 +1,4 @@
-package com.websites;
+package session.websites;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
