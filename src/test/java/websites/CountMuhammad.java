@@ -1,4 +1,4 @@
-package session.websites;
+package websites;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

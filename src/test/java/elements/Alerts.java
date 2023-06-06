@@ -1,4 +1,4 @@
-package session.elements;
+package elements;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
