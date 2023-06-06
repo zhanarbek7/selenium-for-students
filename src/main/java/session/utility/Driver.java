@@ -2,11 +2,9 @@ package session.utility;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class Driver {
 
@@ -41,6 +39,7 @@ public class Driver {
     }
 
     public static void quitDriver(){
+        System.out.println("Quiting Google");
         if(driver!=null){
             driver.quit();
             driver=null;
